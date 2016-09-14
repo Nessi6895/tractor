@@ -2,9 +2,15 @@ package ru.sbt.test.refactoring;
 
 public class Tractor {
 
-	int[] position = new int[] { 0, 0 };
-	int[] field = new int[] { 5, 5 };
-	Orientation orientation = Orientation.NORTH;
+	private Position position;
+	private Field field;
+	Orientation orientation;
+
+	public Tractor(Position position, Field field, Orientation orientation) {
+		this.position = position;
+		this.field = field;
+		this.orientation = orientation;
+	}
 
 	public void move(String command) {
         if (command == "F") {
@@ -15,15 +21,7 @@ public class Tractor {
 	}
 
     public void moveForwards() {
-		if (orientation == Orientation.NORTH) {
-			position = new int[] { position[0], position[1] + 1 };
-		} else if (orientation == Orientation.EAST) {
-			position = new int[] { position[0] + 1, position[1] };
-		} else if (orientation == Orientation.SOUTH) {
-			position = new int[] { position[0], position[1] - 1 };
-		} else if (orientation == Orientation.WEST) {
-			position = new int[] { position[0] - 1, position[1] };
-		}
+		pos
 		if (position[0] > field[0] || position[1] > field[1]) {
 			throw new TractorInDitchException();
 		}
