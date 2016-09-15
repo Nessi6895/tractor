@@ -9,7 +9,7 @@ public class Field {
         this.width = width;
     }
 
-    public boolean inInTheField(Position position) {
+    public boolean isInTheField(Position position) {
         if (position.getX() <= 0 || position.getX() > length) return false;
         if (position.getY() <= 0 || position.getY() > width) return false;
         return true;

@@ -21,30 +21,22 @@ public class Tractor {
 	}
 
     public void moveForwards() {
-		pos
-		if (position[0] > field[0] || position[1] > field[1]) {
-			throw new TractorInDitchException();
+		position = orientation.move(position);
+		if (field.isInTheField(position)) {
+			throw new TractorInDitchException("Out of field");
 		}
 	}
 
     public void turnClockwise() {
-		if (orientation == Orientation.NORTH) {
-			orientation = Orientation.EAST;
-		} else if (orientation == Orientation.EAST) {
-			orientation = Orientation.SOUTH;
-		} else if (orientation == Orientation.SOUTH) {
-			orientation = Orientation.WEST;
-		} else if (orientation == Orientation.WEST) {
-			orientation = Orientation.NORTH;
-		}
+		orientation.turn();
 	}
 
 	public int getPositionX() {
-		return position[0];
+		return position.getX();
 	}
 
 	public int getPositionY() {
-		return position[1];
+		return position.getY();
 	}
 
 	public Orientation getOrientation() {
