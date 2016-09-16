@@ -9,6 +9,12 @@ public class Position {
         this.y = y;
     }
 
+    public boolean isInTheField(Field field){
+        if (getX() > field.getLength()) return false;
+        if (getY() > field.getWidth()) return false;
+        return true;
+    }
+
     public int getX() {
         return x;
     }

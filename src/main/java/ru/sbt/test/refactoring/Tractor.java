@@ -6,6 +6,10 @@ public class Tractor {
 	private Field field;
 	Orientation orientation;
 
+	public Tractor() {
+		this(new Position(0,0), new Field(5,5), Orientation.NORTH);
+	}
+
 	public Tractor(Position position, Field field, Orientation orientation) {
 		this.position = position;
 		this.field = field;
@@ -22,13 +26,13 @@ public class Tractor {
 
     public void moveForwards() {
 		position = orientation.move(position);
-		if (field.isInTheField(position)) {
+		if (!position.isInTheField(field)) {
 			throw new TractorInDitchException("Out of field");
 		}
 	}
 
     public void turnClockwise() {
-		orientation.turn();
+		orientation = orientation.turn();
 	}
 
 	public int getPositionX() {
